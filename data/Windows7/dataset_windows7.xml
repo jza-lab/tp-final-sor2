@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.98 scan initiated Mon May 11 23:30:04 2026 as: /usr/lib/nmap/nmap -p- -sV -sC -oX dataset_windows7.xml 192.168.56.104 -->
+<nmaprun scanner="nmap" args="/usr/lib/nmap/nmap -p- -sV -sC -oX dataset_windows7.xml 192.168.56.104" start="1778556604" startstr="Mon May 11 23:30:04 2026" version="7.98" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.56.104" addrtype="ipv4"/>
+<address addr="08:00:27:E3:25:FA" addrtype="mac" vendor="Oracle VirtualBox virtual NIC"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1778556605" endtime="1778556685"><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.56.104" addrtype="ipv4"/>
+<address addr="08:00:27:E3:25:FA" addrtype="mac" vendor="Oracle VirtualBox virtual NIC"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="closed" count="65526">
+<extrareasons reason="reset" count="65526" proto="tcp" ports="1-134,136-138,140-444,446-49151,49158-65535"/>
+</extraports>
+<port protocol="tcp" portid="135"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="139"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="netbios-ssn" product="Microsoft Windows netbios-ssn" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="microsoft-ds" product="Windows 7 Starter 7601 Service Pack 1 microsoft-ds" extrainfo="workgroup: WORKGROUP" hostname="WINDOWS7ULTIMAT" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49152"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49153"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49154"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49155"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49156"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49157"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+</ports>
+<hostscript><script id="clock-skew" output="mean: 58m52s, deviation: 1h43m55s, median: -1m07s"><elem key="median">-67</elem>
+<elem key="mean">3532</elem>
+<elem key="stddev">6235</elem>
+<elem key="count">3</elem>
+</script><script id="smb-os-discovery" output="&#xa;  OS: Windows 7 Starter 7601 Service Pack 1 (Windows 7 Starter 6.1)&#xa;  OS CPE: cpe:/o:microsoft:windows_7::sp1&#xa;  Computer name: Windows7Ultimat&#xa;  NetBIOS computer name: WINDOWS7ULTIMAT\x00&#xa;  Workgroup: WORKGROUP\x00&#xa;  System time: 2026-05-12T00:30:13-03:00&#xa;"><elem key="os">Windows 7 Starter 7601 Service Pack 1</elem>
+<elem key="lanmanager">Windows 7 Starter 6.1</elem>
+<elem key="server">WINDOWS7ULTIMAT\x00</elem>
+<elem key="date">2026-05-12T00:30:13-03:00</elem>
+<elem key="fqdn">Windows7Ultimat</elem>
+<elem key="domain_dns">Windows7Ultimat</elem>
+<elem key="workgroup">WORKGROUP\x00</elem>
+<elem key="cpe">cpe:/o:microsoft:windows_7::sp1</elem>
+</script><script id="smb-security-mode" output="&#xa;  account_used: guest&#xa;  authentication_level: user&#xa;  challenge_response: supported&#xa;  message_signing: disabled (dangerous, but default)"><elem key="account_used">guest</elem>
+<elem key="authentication_level">user</elem>
+<elem key="challenge_response">supported</elem>
+<elem key="message_signing">disabled</elem>
+</script><script id="smb2-security-mode" output="&#xa;  2.1: &#xa;    Message signing enabled but not required"><table key="2.1">
+<elem>Message signing enabled but not required</elem>
+</table>
+</script><script id="smb2-time" output="&#xa;  date: 2026-05-12T03:30:13&#xa;  start_date: 2026-05-12T03:18:20"><elem key="date">2026-05-12T03:30:13</elem>
+<elem key="start_date">2026-05-12T03:18:20</elem>
+</script><script id="nbstat" output="NetBIOS name: WINDOWS7ULTIMAT, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: 08:00:27:e3:25:fa (Oracle VirtualBox virtual NIC)"/></hostscript><times srtt="2715" rttvar="488" to="100000"/>
+</host>
+<runstats><finished time="1778556685" timestr="Mon May 11 23:31:25 2026" summary="Nmap done at Mon May 11 23:31:25 2026; 1 IP address (1 host up) scanned in 81.37 seconds" elapsed="81.37" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>
