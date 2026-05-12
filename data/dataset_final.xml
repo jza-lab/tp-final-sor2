@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE nmaprun>
 <?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
-<!-- Nmap 7.98 scan initiated Mon May 11 22:36:03 2026 as: /usr/lib/nmap/nmap -p- -sV -sC -oX dataset_final.xml 192.168.56.101 192.168.56.102 192.168.56.103 -->
-<nmaprun scanner="nmap" args="/usr/lib/nmap/nmap -p- -sV -sC -oX dataset_final.xml 192.168.56.101 192.168.56.102 192.168.56.103" start="1778553363" startstr="Mon May 11 22:36:03 2026" version="7.98" xmloutputversion="1.05">
+<!-- Nmap 7.98 scan initiated Mon May 11 23:32:45 2026 as: /usr/lib/nmap/nmap -p- -sV -sC -oX dataset_final.xml 192.168.56.101 192.168.56.102 192.168.56.103 192.168.56.104 -->
+<nmaprun scanner="nmap" args="/usr/lib/nmap/nmap -p- -sV -sC -oX dataset_final.xml 192.168.56.101 192.168.56.102 192.168.56.103 192.168.56.104" start="1778556765" startstr="Mon May 11 23:32:45 2026" version="7.98" xmloutputversion="1.05">
 <scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535"/>
 <verbose level="0"/>
 <debugging level="0"/>
@@ -24,16 +24,22 @@
 <hostnames>
 </hostnames>
 </hosthint>
-<host starttime="1778553365" endtime="1778553661"><status state="up" reason="arp-response" reason_ttl="0"/>
+<hosthint><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.56.104" addrtype="ipv4"/>
+<address addr="08:00:27:E3:25:FA" addrtype="mac" vendor="Oracle VirtualBox virtual NIC"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1778556767" endtime="1778557083"><status state="up" reason="arp-response" reason_ttl="0"/>
 <address addr="192.168.56.101" addrtype="ipv4"/>
 <address addr="08:00:27:DC:87:63" addrtype="mac" vendor="Oracle VirtualBox virtual NIC"/>
 <hostnames>
 </hostnames>
-<ports><extraports state="closed" count="65506">
-<extrareasons reason="reset" count="65506" proto="tcp" ports="1-20,24,26-52,54-79,81-110,112-138,140-444,446-511,515-1098,1100-1523,1525-2048,2050-2120,2122-3305,3307-3631,3633-5431,5433-5899,5901-5999,6001-6666,6668-6696,6698-8179,8181-8786,8788-37098,37100-44075,44077-46566,46568-58446,58448-65535"/>
+<ports><extraports state="closed" count="65505">
+<extrareasons reason="reset" count="65505" proto="tcp" ports="1-20,24,26-52,54-79,81-110,112-138,140-444,446-511,515-1098,1100-1523,1525-2048,2050-2120,2122-3305,3307-3631,3633-5431,5433-5899,5901-5999,6001-6666,6668-6696,6698-8008,8010-8179,8181-8786,8788-37098,37100-44075,44077-46566,46568-58446,58448-65535"/>
 </extraports>
-<port protocol="tcp" portid="21"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="ftp" product="vsftpd" version="2.3.4" ostype="Unix" method="probed" conf="10"><cpe>cpe:/a:vsftpd:vsftpd:2.3.4</cpe></service><script id="ftp-syst" output="&#xa;  STAT: &#xa;FTP server status:&#xa;     Connected to 192.168.56.100&#xa;     Logged in as ftp&#xa;     TYPE: ASCII&#xa;     No session bandwidth limit&#xa;     Session timeout in seconds is 300&#xa;     Control connection is plain text&#xa;     Data connections will be plain text&#xa;     vsFTPd 2.3.4 - secure, fast, stable&#xa;End of status"><elem key="STAT">&#xa;FTP server status:&#xa;     Connected to 192.168.56.100&#xa;     Logged in as ftp&#xa;     TYPE: ASCII&#xa;     No session bandwidth limit&#xa;     Session timeout in seconds is 300&#xa;     Control connection is plain text&#xa;     Data connections will be plain text&#xa;     vsFTPd 2.3.4 - secure, fast, stable&#xa;End of status</elem>
-</script><script id="ftp-anon" output="Anonymous FTP login allowed (FTP code 230)"/></port>
+<port protocol="tcp" portid="21"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="ftp" product="vsftpd" version="2.3.4" ostype="Unix" method="probed" conf="10"><cpe>cpe:/a:vsftpd:vsftpd:2.3.4</cpe></service><script id="ftp-anon" output="Anonymous FTP login allowed (FTP code 230)"/><script id="ftp-syst" output="&#xa;  STAT: &#xa;FTP server status:&#xa;     Connected to 192.168.56.100&#xa;     Logged in as ftp&#xa;     TYPE: ASCII&#xa;     No session bandwidth limit&#xa;     Session timeout in seconds is 300&#xa;     Control connection is plain text&#xa;     Data connections will be plain text&#xa;     vsFTPd 2.3.4 - secure, fast, stable&#xa;End of status"><elem key="STAT">&#xa;FTP server status:&#xa;     Connected to 192.168.56.100&#xa;     Logged in as ftp&#xa;     TYPE: ASCII&#xa;     No session bandwidth limit&#xa;     Session timeout in seconds is 300&#xa;     Control connection is plain text&#xa;     Data connections will be plain text&#xa;     vsFTPd 2.3.4 - secure, fast, stable&#xa;End of status</elem>
+</script></port>
 <port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="ssh" product="OpenSSH" version="4.7p1 Debian 8ubuntu1" extrainfo="protocol 2.0" ostype="Linux" method="probed" conf="10"><cpe>cpe:/a:openbsd:openssh:4.7p1</cpe><cpe>cpe:/o:linux:linux_kernel</cpe></service><script id="ssh-hostkey" output="&#xa;  1024 60:0f:cf:e1:c0:5f:6a:74:d6:90:24:fa:c4:d5:6c:cd (DSA)&#xa;  2048 56:56:24:0f:21:1d:de:a7:2b:ae:61:b1:24:3d:e8:f3 (RSA)"><table>
 <elem key="key">AAAAB3NzaC1kc3MAAACBALz4hsc8a2Srq4nlW960qV8xwBG0JC+jI7fWxm5METIJH4tKr/xUTwsTYEYnaZLzcOiy21D3ZvOwYb6AA3765zdgCd2Tgand7F0YD5UtXG7b7fbz99chReivL0SIWEG/E96Ai+pqYMP2WD5KaOJwSIXSUajnU5oWmY5x85sBw+XDAAAAFQDFkMpmdFQTF+oRqaoSNVU7Z+hjSwAAAIBCQxNKzi1TyP+QJIFa3M0oLqCVWI0We/ARtXrzpBOJ/dt0hTJXCeYisKqcdwdtyIn8OUCOyrIjqNuA2QW217oQ6wXpbFh+5AQm8Hl3b6C6o8lX3Ptw+Y4dp0lzfWHwZ/jzHwtuaDQaok7u1f971lEazeJLqfiWrAzoklqSWyDQJAAAAIA1lAD3xWYkeIeHv/R3P9i+XaoI7imFkMuYXCDTq843YU6Td+0mWpllCqAWUV/CQamGgQLtYy5S0ueoks01MoKdOMMhKVwqdr08nvCBdNKjIEd3gH6oBk/YRnjzxlEAYBsvCmM4a0jmhz0oNiRWlc/F+bkUeFKrBx/D2fdfZmhrGg==</elem>
 <elem key="type">ssh-dss</elem>
@@ -51,18 +57,10 @@
 <port protocol="tcp" portid="25"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="smtp" product="Postfix smtpd" hostname=" metasploitable.localdomain" method="probed" conf="10"><cpe>cpe:/a:postfix:postfix</cpe></service><script id="smtp-commands" output="metasploitable.localdomain, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN"/></port>
 <port protocol="tcp" portid="53"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="domain" product="ISC BIND" version="9.4.2" method="probed" conf="10"><cpe>cpe:/a:isc:bind:9.4.2</cpe></service><script id="dns-nsid" output="&#xa;  bind.version: 9.4.2"><elem key="bind.version">9.4.2</elem>
 </script></port>
-<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="http" product="Apache httpd" version="2.2.8" extrainfo="(Ubuntu) DAV/2" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2.2.8</cpe></service><script id="http-title" output="Metasploitable2 - Linux"><elem key="title">Metasploitable2 - Linux</elem>
-</script><script id="http-server-header" output="Apache/2.2.8 (Ubuntu) DAV/2"><elem>Apache/2.2.8 (Ubuntu) DAV/2</elem>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="http" product="Apache httpd" version="2.2.8" extrainfo="(Ubuntu) DAV/2" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2.2.8</cpe></service><script id="http-server-header" output="Apache/2.2.8 (Ubuntu) DAV/2"><elem>Apache/2.2.8 (Ubuntu) DAV/2</elem>
+</script><script id="http-title" output="Metasploitable2 - Linux"><elem key="title">Metasploitable2 - Linux</elem>
 </script></port>
 <port protocol="tcp" portid="111"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="rpcbind" version="2" extrainfo="RPC #100000" method="probed" conf="10"/><script id="rpcinfo" output="&#xa;  program version    port/proto  service&#xa;  100000  2            111/tcp   rpcbind&#xa;  100000  2            111/udp   rpcbind&#xa;  100003  2,3,4       2049/tcp   nfs&#xa;  100003  2,3,4       2049/udp   nfs&#xa;  100005  1,2,3      37099/tcp   mountd&#xa;  100005  1,2,3      48198/udp   mountd&#xa;  100021  1,3,4      37293/udp   nlockmgr&#xa;  100021  1,3,4      46567/tcp   nlockmgr&#xa;  100024  1          41054/udp   status&#xa;  100024  1          58447/tcp   status&#xa;"><table key="100003">
-<table key="udp">
-<table key="version">
-<elem>2</elem>
-<elem>3</elem>
-<elem>4</elem>
-</table>
-<elem key="port">2049</elem>
-</table>
 <table key="tcp">
 <table key="version">
 <elem>2</elem>
@@ -71,16 +69,44 @@
 </table>
 <elem key="port">2049</elem>
 </table>
+<table key="udp">
+<table key="version">
+<elem>2</elem>
+<elem>3</elem>
+<elem>4</elem>
 </table>
-<table key="100005">
+<elem key="port">2049</elem>
+</table>
+</table>
+<table key="100000">
+<table key="udp">
+<table key="version">
+<elem>2</elem>
+</table>
+<elem key="port">111</elem>
+</table>
+<table key="tcp">
+<table key="version">
+<elem>2</elem>
+</table>
+<elem key="port">111</elem>
+</table>
+</table>
+<table key="100024">
+<table key="tcp">
+<table key="version">
+<elem>1</elem>
+</table>
+<elem key="port">58447</elem>
+</table>
 <table key="udp">
 <table key="version">
 <elem>1</elem>
-<elem>2</elem>
-<elem>3</elem>
 </table>
-<elem key="port">48198</elem>
+<elem key="port">41054</elem>
 </table>
+</table>
+<table key="100005">
 <table key="tcp">
 <table key="version">
 <elem>1</elem>
@@ -89,16 +115,16 @@
 </table>
 <elem key="port">37099</elem>
 </table>
-</table>
-<table key="100021">
 <table key="udp">
 <table key="version">
 <elem>1</elem>
+<elem>2</elem>
 <elem>3</elem>
-<elem>4</elem>
 </table>
-<elem key="port">37293</elem>
+<elem key="port">48198</elem>
 </table>
+</table>
+<table key="100021">
 <table key="tcp">
 <table key="version">
 <elem>1</elem>
@@ -107,33 +133,13 @@
 </table>
 <elem key="port">46567</elem>
 </table>
-</table>
-<table key="100024">
 <table key="udp">
 <table key="version">
 <elem>1</elem>
+<elem>3</elem>
+<elem>4</elem>
 </table>
-<elem key="port">41054</elem>
-</table>
-<table key="tcp">
-<table key="version">
-<elem>1</elem>
-</table>
-<elem key="port">58447</elem>
-</table>
-</table>
-<table key="100000">
-<table key="tcp">
-<table key="version">
-<elem>2</elem>
-</table>
-<elem key="port">111</elem>
-</table>
-<table key="udp">
-<table key="version">
-<elem>2</elem>
-</table>
-<elem key="port">111</elem>
+<elem key="port">37293</elem>
 </table>
 </table>
 </script></port>
@@ -146,24 +152,26 @@
 <port protocol="tcp" portid="1524"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="bindshell" product="Metasploitable root shell" method="probed" conf="10"/></port>
 <port protocol="tcp" portid="2049"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="nfs" version="2-4" extrainfo="RPC #100003" method="probed" conf="10"/></port>
 <port protocol="tcp" portid="2121"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="ftp" product="ProFTPD" version="1.3.1" ostype="Unix" method="probed" conf="10"><cpe>cpe:/a:proftpd:proftpd:1.3.1</cpe></service></port>
-<port protocol="tcp" portid="3306"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="mysql" product="MySQL" version="5.0.51a-3ubuntu5" method="probed" conf="10"><cpe>cpe:/a:mysql:mysql:5.0.51a-3ubuntu5</cpe></service><script id="mysql-info" output="&#xa;  Protocol: 10&#xa;  Version: 5.0.51a-3ubuntu5&#xa;  Thread ID: 9&#xa;  Capabilities flags: 43564&#xa;  Some Capabilities: SupportsTransactions, ConnectWithDatabase, SwitchToSSLAfterHandshake, LongColumnFlag, Speaks41ProtocolNew, Support41Auth, SupportsCompression&#xa;  Status: Autocommit&#xa;  Salt: tHK|RbuF?H+&gt;5.)~dXj1"><elem key="Protocol">10</elem>
+<port protocol="tcp" portid="3306"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="mysql" product="MySQL" version="5.0.51a-3ubuntu5" method="probed" conf="10"><cpe>cpe:/a:mysql:mysql:5.0.51a-3ubuntu5</cpe></service><script id="mysql-info" output="&#xa;  Protocol: 10&#xa;  Version: 5.0.51a-3ubuntu5&#xa;  Thread ID: 16&#xa;  Capabilities flags: 43564&#xa;  Some Capabilities: Support41Auth, LongColumnFlag, SwitchToSSLAfterHandshake, SupportsTransactions, SupportsCompression, ConnectWithDatabase, Speaks41ProtocolNew&#xa;  Status: Autocommit&#xa;  Salt: )RD&lt;?hnpf1\_I/Nz&gt;bUb"><elem key="Protocol">10</elem>
 <elem key="Version">5.0.51a-3ubuntu5</elem>
-<elem key="Thread ID">9</elem>
+<elem key="Thread ID">16</elem>
 <elem key="Capabilities flags">43564</elem>
 <table key="Some Capabilities">
-<elem>SupportsTransactions</elem>
-<elem>ConnectWithDatabase</elem>
-<elem>SwitchToSSLAfterHandshake</elem>
-<elem>LongColumnFlag</elem>
-<elem>Speaks41ProtocolNew</elem>
 <elem>Support41Auth</elem>
+<elem>LongColumnFlag</elem>
+<elem>SwitchToSSLAfterHandshake</elem>
+<elem>SupportsTransactions</elem>
 <elem>SupportsCompression</elem>
+<elem>ConnectWithDatabase</elem>
+<elem>Speaks41ProtocolNew</elem>
 </table>
 <elem key="Status">Autocommit</elem>
-<elem key="Salt">tHK|RbuF?H+&gt;5.)~dXj1</elem>
+<elem key="Salt">)RD&lt;?hnpf1\_I/Nz&gt;bUb</elem>
 </script></port>
 <port protocol="tcp" portid="3632"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="distccd" product="distccd" version="v1" extrainfo="(GNU) 4.2.4 (Ubuntu 4.2.4-1ubuntu4)" method="probed" conf="10"/></port>
-<port protocol="tcp" portid="5432"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="postgresql" product="PostgreSQL DB" version="8.3.0 - 8.3.7" method="probed" conf="10"><cpe>cpe:/a:postgresql:postgresql:8.3</cpe></service><script id="ssl-cert" output="Subject: commonName=ubuntu804-base.localdomain/organizationName=OCOSA/stateOrProvinceName=There is no such thing outside US/countryName=XX&#xa;Not valid before: 2010-03-17T14:07:45&#xa;Not valid after:  2010-04-16T14:07:45"><table key="subject">
+<port protocol="tcp" portid="5432"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="postgresql" product="PostgreSQL DB" version="8.3.0 - 8.3.7" method="probed" conf="10"><cpe>cpe:/a:postgresql:postgresql:8.3</cpe></service><script id="ssl-date" output="2026-05-12T03:35:59+00:00; -1m06s from scanner time."><elem key="date">2026-05-12T03:35:59+00:00</elem>
+<elem key="delta">-66.0</elem>
+</script><script id="ssl-cert" output="Subject: commonName=ubuntu804-base.localdomain/organizationName=OCOSA/stateOrProvinceName=There is no such thing outside US/countryName=XX&#xa;Not valid before: 2010-03-17T14:07:45&#xa;Not valid after:  2010-04-16T14:07:45"><table key="subject">
 <elem key="commonName">ubuntu804-base.localdomain</elem>
 <elem key="countryName">XX</elem>
 <elem key="emailAddress">root@ubuntu804-base.localdomain</elem>
@@ -196,8 +204,6 @@
 <elem key="sha1">ed093088706603bfd5dc237399b498da2d4d31c6</elem>
 <elem key="sha256">e7a7fa0d63e457c7c4a59b38b70849c6a70bda6f830c7af1e32dee436de813cc</elem>
 <elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIDWzCCAsQCCQD6+TpMf7a5zDANBgkqhkiG9w0BAQUFADCB8TELMAkGA1UEBhMC&#xa;WFgxKjAoBgNVBAgTIVRoZXJlIGlzIG5vIHN1Y2ggdGhpbmcgb3V0c2lkZSBVUzET&#xa;MBEGA1UEBxMKRXZlcnl3aGVyZTEOMAwGA1UEChMFT0NPU0ExPDA6BgNVBAsTM09m&#xa;ZmljZSBmb3IgQ29tcGxpY2F0aW9uIG9mIE90aGVyd2lzZSBTaW1wbGUgQWZmYWly&#xa;czEjMCEGA1UEAxMadWJ1bnR1ODA0LWJhc2UubG9jYWxkb21haW4xLjAsBgkqhkiG&#xa;9w0BCQEWH3Jvb3RAdWJ1bnR1ODA0LWJhc2UubG9jYWxkb21haW4wHhcNMTAwMzE3&#xa;MTQwNzQ1WhcNMTAwNDE2MTQwNzQ1WjCB8TELMAkGA1UEBhMCWFgxKjAoBgNVBAgT&#xa;IVRoZXJlIGlzIG5vIHN1Y2ggdGhpbmcgb3V0c2lkZSBVUzETMBEGA1UEBxMKRXZl&#xa;cnl3aGVyZTEOMAwGA1UEChMFT0NPU0ExPDA6BgNVBAsTM09mZmljZSBmb3IgQ29t&#xa;cGxpY2F0aW9uIG9mIE90aGVyd2lzZSBTaW1wbGUgQWZmYWlyczEjMCEGA1UEAxMa&#xa;dWJ1bnR1ODA0LWJhc2UubG9jYWxkb21haW4xLjAsBgkqhkiG9w0BCQEWH3Jvb3RA&#xa;dWJ1bnR1ODA0LWJhc2UubG9jYWxkb21haW4wgZ8wDQYJKoZIhvcNAQEBBQADgY0A&#xa;MIGJAoGBANa0EzYzmpVxexvefIN12nGxPKl//q1kG3fpT66+ytT4y++uu0N5JHP/&#xa;POWeO238yLGs+kxNXptMmVQL16hKULqp3h0f9ORrAqP0a0XNTK+NiWIzj2W7NmGf&#xa;xCxzwU4uoKgUTphwRmG70bkx34yZ7nVreTxAoK6XAJCd3JkNM6S1AgMBAAEwDQYJ&#xa;KoZIhvcNAQEFBQADgYEAkqS0uBRVYyVRSgvDKiLPOvgXagzPZqqnZS9Ibc3jPlyf&#xa;d2zURFQfHoRPjtSN3awtiAkhqNpWLKkFPEloNRl1DNpTI4iIGS10JsEiZe4RaINq&#xa;U0qcJ8ugtOmNKQyyPBhcZ8xTph4w0Komex6uQLkpAWwuvKIZlHwVbo0wOPbKLnU=&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
-</script><script id="ssl-date" output="2026-05-12T02:39:37+00:00; +3s from scanner time."><elem key="delta">3.0</elem>
-<elem key="date">2026-05-12T02:39:37+00:00</elem>
 </script></port>
 <port protocol="tcp" portid="5900"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="vnc" product="VNC" extrainfo="protocol 3.3" method="probed" conf="10"/><script id="vnc-info" output="&#xa;  Protocol version: 3.3&#xa;  Security types: &#xa;    VNC Authentication (2)"><elem key="Protocol version">3.3</elem>
 <table key="Security types">
@@ -210,32 +216,34 @@
 <port protocol="tcp" portid="6000"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="X11" extrainfo="access denied" method="probed" conf="10"/></port>
 <port protocol="tcp" portid="6667"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="irc" product="UnrealIRCd" hostname="irc.Metasploitable.LAN" method="probed" conf="10"><cpe>cpe:/a:unrealircd:unrealircd</cpe></service></port>
 <port protocol="tcp" portid="6697"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="irc" product="UnrealIRCd" hostname="irc.Metasploitable.LAN" method="probed" conf="10"><cpe>cpe:/a:unrealircd:unrealircd</cpe></service></port>
-<port protocol="tcp" portid="8180"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="http" product="Apache Tomcat/Coyote JSP engine" version="1.1" method="probed" conf="10"><cpe>cpe:/a:apache:coyote_http_connector:1.1</cpe></service><script id="http-title" output="Apache Tomcat/5.5"><elem key="title">Apache Tomcat/5.5</elem>
-</script><script id="http-favicon" output="Apache Tomcat"/></port>
+<port protocol="tcp" portid="8009"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="ajp13" product="Apache Jserv" extrainfo="Protocol v1.3" method="probed" conf="10"/><script id="ajp-methods" output="Failed to get a valid response for the OPTION request"/></port>
+<port protocol="tcp" portid="8180"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="http" product="Apache Tomcat/Coyote JSP engine" version="1.1" method="probed" conf="10"><cpe>cpe:/a:apache:coyote_http_connector:1.1</cpe></service><script id="http-favicon" output="Apache Tomcat"/><script id="http-server-header" output="Apache-Coyote/1.1"><elem>Apache-Coyote/1.1</elem>
+</script><script id="http-title" output="Apache Tomcat/5.5"><elem key="title">Apache Tomcat/5.5</elem>
+</script></port>
 <port protocol="tcp" portid="8787"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="drb" product="Ruby DRb RMI" extrainfo="Ruby 1.8; path /usr/lib/ruby/1.8/drb" method="probed" conf="10"><cpe>cpe:/a:ruby-lang:ruby:1.8</cpe></service></port>
 <port protocol="tcp" portid="37099"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="mountd" version="1-3" extrainfo="RPC #100005" method="probed" conf="10"/></port>
 <port protocol="tcp" portid="44076"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="java-rmi" product="GNU Classpath grmiregistry" method="probed" conf="10"/></port>
 <port protocol="tcp" portid="46567"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="nlockmgr" version="1-4" extrainfo="RPC #100021" method="probed" conf="10"/></port>
 <port protocol="tcp" portid="58447"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="status" version="1" extrainfo="RPC #100024" method="probed" conf="10"/></port>
 </ports>
-<hostscript><script id="smb-security-mode" output="&#xa;  account_used: guest&#xa;  authentication_level: user&#xa;  challenge_response: supported&#xa;  message_signing: disabled (dangerous, but default)"><elem key="account_used">guest</elem>
-<elem key="authentication_level">user</elem>
-<elem key="challenge_response">supported</elem>
-<elem key="message_signing">disabled</elem>
-</script><script id="smb2-time" output="Protocol negotiation failed (SMB2)"/><script id="clock-skew" output="mean: 1h20m05s, deviation: 2h18m37s, median: 2s"><elem key="mean">4805</elem>
-<elem key="stddev">8317</elem>
-<elem key="count">3</elem>
-<elem key="median">2</elem>
-</script><script id="nbstat" output="NetBIOS name: METASPLOITABLE, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: &lt;unknown&gt; (unknown)"/><script id="smb-os-discovery" output="&#xa;  OS: Unix (Samba 3.0.20-Debian)&#xa;  Computer name: metasploitable&#xa;  NetBIOS computer name: &#xa;  Domain name: localdomain&#xa;  FQDN: metasploitable.localdomain&#xa;  System time: 2026-05-11T22:39:12-04:00&#xa;"><elem key="os">Unix</elem>
+<hostscript><script id="smb2-time" output="Protocol negotiation failed (SMB2)"/><script id="smb-os-discovery" output="&#xa;  OS: Unix (Samba 3.0.20-Debian)&#xa;  Computer name: metasploitable&#xa;  NetBIOS computer name: &#xa;  Domain name: localdomain&#xa;  FQDN: metasploitable.localdomain&#xa;  System time: 2026-05-11T23:35:03-04:00&#xa;"><elem key="os">Unix</elem>
 <elem key="lanmanager">Samba 3.0.20-Debian</elem>
 <elem key="server"></elem>
-<elem key="date">2026-05-11T22:39:12-04:00</elem>
+<elem key="date">2026-05-11T23:35:03-04:00</elem>
 <elem key="fqdn">metasploitable.localdomain</elem>
 <elem key="domain_dns">localdomain</elem>
 <elem key="workgroup">WORKGROUP\x00</elem>
-</script></hostscript><times srtt="467" rttvar="121" to="100000"/>
+</script><script id="smb-security-mode" output="&#xa;  account_used: &lt;blank&gt;&#xa;  authentication_level: user&#xa;  challenge_response: supported&#xa;  message_signing: disabled (dangerous, but default)"><elem key="account_used">&lt;blank&gt;</elem>
+<elem key="authentication_level">user</elem>
+<elem key="challenge_response">supported</elem>
+<elem key="message_signing">disabled</elem>
+</script><script id="clock-skew" output="mean: 1h18m54s, deviation: 2h18m35s, median: -1m06s"><elem key="stddev">8315</elem>
+<elem key="count">3</elem>
+<elem key="median">-66</elem>
+<elem key="mean">4734</elem>
+</script><script id="nbstat" output="NetBIOS name: METASPLOITABLE, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: &lt;unknown&gt; (unknown)"/></hostscript><times srtt="463" rttvar="108" to="100000"/>
 </host>
-<host starttime="1778553365" endtime="1778553661"><status state="up" reason="arp-response" reason_ttl="0"/>
+<host starttime="1778556767" endtime="1778557083"><status state="up" reason="arp-response" reason_ttl="0"/>
 <address addr="192.168.56.102" addrtype="ipv4"/>
 <address addr="08:00:27:AB:37:75" addrtype="mac" vendor="Oracle VirtualBox virtual NIC"/>
 <hostnames>
@@ -257,15 +265,15 @@
 </table>
 </script></port>
 <port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="http" product="Apache httpd" version="2.2.14" extrainfo="(Ubuntu) mod_mono/2.4.3 PHP/5.3.2-1ubuntu4.30 with Suhosin-Patch proxy_html/3.0.1 mod_python/3.3.1 Python/2.6.5 mod_ssl/2.2.14 OpenSSL/0.9.8k Phusion_Passenger/4.0.38 mod_perl/2.0.4 Perl/v5.10.1" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2.2.14</cpe></service><script id="http-server-header" output="Apache/2.2.14 (Ubuntu) mod_mono/2.4.3 PHP/5.3.2-1ubuntu4.30 with Suhosin-Patch proxy_html/3.0.1 mod_python/3.3.1 Python/2.6.5 mod_ssl/2.2.14 OpenSSL/0.9.8k Phusion_Passenger/4.0.38 mod_perl/2.0.4 Perl/v5.10.1"><elem>Apache/2.2.14 (Ubuntu) mod_mono/2.4.3 PHP/5.3.2-1ubuntu4.30 with Suhosin-Patch proxy_html/3.0.1 mod_python/3.3.1 Python/2.6.5 mod_ssl/2.2.14 OpenSSL/0.9.8k Phusion_Passenger/4.0.38 mod_perl/2.0.4 Perl/v5.10.1</elem>
+</script><script id="http-title" output="owaspbwa OWASP Broken Web Applications"><elem key="title">owaspbwa OWASP Broken Web Applications</elem>
 </script><script id="http-methods" output="&#xa;  Potentially risky methods: TRACE"><table key="Potentially risky methods">
 <elem>TRACE</elem>
 </table>
-</script><script id="http-title" output="owaspbwa OWASP Broken Web Applications"><elem key="title">owaspbwa OWASP Broken Web Applications</elem>
 </script></port>
 <port protocol="tcp" portid="139"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="netbios-ssn" product="Samba smbd" version="3.X - 4.X" extrainfo="workgroup: WORKGROUP" method="probed" conf="10"><cpe>cpe:/a:samba:samba</cpe></service></port>
-<port protocol="tcp" portid="143"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="imap" product="Courier Imapd" extrainfo="released 2008" method="probed" conf="10"/><script id="imap-capabilities" output="CAPABILITY SORT IDLE QUOTA THREAD=ORDEREDSUBJECT UIDPLUS CHILDREN OK NAMESPACE ACL completed ACL2=UNIONA0001 THREAD=REFERENCES IMAP4rev1"/></port>
-<port protocol="tcp" portid="443"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="http" product="Apache httpd" version="2.2.14" extrainfo="(Ubuntu) mod_mono/2.4.3 PHP/5.3.2-1ubuntu4.30 with Suhosin-Patch proxy_html/3.0.1 mod_python/3.3.1 Python/2.6.5 mod_ssl/2.2.14 OpenSSL/0.9.8k Phusion_Passenger/4.0.38 mod_perl/2.0.4 Perl/v5.10.1" tunnel="ssl" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2.2.14</cpe></service><script id="ssl-date" output="2026-05-11T23:39:30+00:00; -2h59m57s from scanner time."><elem key="delta">-10797.0</elem>
-<elem key="date">2026-05-11T23:39:30+00:00</elem>
+<port protocol="tcp" portid="143"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="imap" product="Courier Imapd" extrainfo="released 2008" method="probed" conf="10"/><script id="imap-capabilities" output="THREAD=REFERENCES completed THREAD=ORDEREDSUBJECT CAPABILITY SORT ACL2=UNIONA0001 OK NAMESPACE ACL IDLE IMAP4rev1 CHILDREN UIDPLUS QUOTA"/></port>
+<port protocol="tcp" portid="443"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="http" product="Apache httpd" version="2.2.14" extrainfo="(Ubuntu) mod_mono/2.4.3 PHP/5.3.2-1ubuntu4.30 with Suhosin-Patch proxy_html/3.0.1 mod_python/3.3.1 Python/2.6.5 mod_ssl/2.2.14 OpenSSL/0.9.8k Phusion_Passenger/4.0.38 mod_perl/2.0.4 Perl/v5.10.1" tunnel="ssl" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2.2.14</cpe></service><script id="http-title" output="owaspbwa OWASP Broken Web Applications"><elem key="title">owaspbwa OWASP Broken Web Applications</elem>
+</script><script id="http-server-header" output="Apache/2.2.14 (Ubuntu) mod_mono/2.4.3 PHP/5.3.2-1ubuntu4.30 with Suhosin-Patch proxy_html/3.0.1 mod_python/3.3.1 Python/2.6.5 mod_ssl/2.2.14 OpenSSL/0.9.8k Phusion_Passenger/4.0.38 mod_perl/2.0.4 Perl/v5.10.1"><elem>Apache/2.2.14 (Ubuntu) mod_mono/2.4.3 PHP/5.3.2-1ubuntu4.30 with Suhosin-Patch proxy_html/3.0.1 mod_python/3.3.1 Python/2.6.5 mod_ssl/2.2.14 OpenSSL/0.9.8k Phusion_Passenger/4.0.38 mod_perl/2.0.4 Perl/v5.10.1</elem>
 </script><script id="http-methods" output="&#xa;  Potentially risky methods: TRACE"><table key="Potentially risky methods">
 <elem>TRACE</elem>
 </table>
@@ -290,11 +298,11 @@
 <elem key="sha1">e469e1f2987740c33aecee7cf630ca1931be05ae</elem>
 <elem key="sha256">b0945e8208949294ec14b1fcd2998bf148333ebb7d34135188e298b4fe2d46b2</elem>
 <elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIBnTCCAQYCCQDmhw3dcsK55zANBgkqhkiG9w0BAQUFADATMREwDwYDVQQDEwhv&#xa;d2FzcGJ3YTAeFw0xMzAxMDIyMTEyMzhaFw0yMjEyMzEyMTEyMzhaMBMxETAPBgNV&#xa;BAMTCG93YXNwYndhMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDIxXtfOh6T&#xa;ceRLAd5LAfA5vFL/uafR15KK+k0Yr1xNjjuPd7iX/AKdUh5wAzM0MqoZeEKi72Hw&#xa;iTezYFJFLvpMQ/6PB+ALtxYnAf7vQkSxmQLsoeKRowKZOV4nIjuEFKCp3ERk7xDb&#xa;Ons5bt62IG9Hxji5cbJMaq4CIMsQc1NHtQIDAQABMA0GCSqGSIb3DQEBBQUAA4GB&#xa;AIgFAJdNKSiApOmwMqBq4oIOrCOKUdDv9is3wJWaz1JeY3lop9WFPzr1RYE8Kcpg&#xa;+2+oIaiUwN8HDAsaMZGfWzv2rncBQOvyfqxARKzL6H+CZ+Rb5MQos7t5OtwHs1Ht&#xa;RU3A6pPOPLai+/ly1/aCwmqNTxpghTNFmVLloxT/HJao&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
-</script><script id="http-server-header" output="Apache/2.2.14 (Ubuntu) mod_mono/2.4.3 PHP/5.3.2-1ubuntu4.30 with Suhosin-Patch proxy_html/3.0.1 mod_python/3.3.1 Python/2.6.5 mod_ssl/2.2.14 OpenSSL/0.9.8k Phusion_Passenger/4.0.38 mod_perl/2.0.4 Perl/v5.10.1"><elem>Apache/2.2.14 (Ubuntu) mod_mono/2.4.3 PHP/5.3.2-1ubuntu4.30 with Suhosin-Patch proxy_html/3.0.1 mod_python/3.3.1 Python/2.6.5 mod_ssl/2.2.14 OpenSSL/0.9.8k Phusion_Passenger/4.0.38 mod_perl/2.0.4 Perl/v5.10.1</elem>
-</script><script id="http-title" output="owaspbwa OWASP Broken Web Applications"><elem key="title">owaspbwa OWASP Broken Web Applications</elem>
+</script><script id="ssl-date" output="2026-05-12T00:36:31+00:00; -3h00m00s from scanner time."><elem key="date">2026-05-12T00:36:31+00:00</elem>
+<elem key="delta">-10800.0</elem>
 </script></port>
 <port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="netbios-ssn" product="Samba smbd" version="3.X - 4.X" extrainfo="workgroup: WORKGROUP" method="probed" conf="10"><cpe>cpe:/a:samba:samba</cpe></service></port>
-<port protocol="tcp" portid="5001"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="java-object" product="Java Object Serialization" servicefp="SF-Port5001-TCP:V=7.98%I=7%D=5/11%Time=6A02924F%P=x86_64-pc-linux-gnu%r(NULL,4,&quot;\xac\xed\0\x05&quot;);" method="probed" conf="10"/></port>
+<port protocol="tcp" portid="5001"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="java-object" product="Java Object Serialization" servicefp="SF-Port5001-TCP:V=7.98%I=7%D=5/11%Time=6A029FAE%P=x86_64-pc-linux-gnu%r(NULL,4,&quot;\xac\xed\0\x05&quot;);" method="probed" conf="10"/></port>
 <port protocol="tcp" portid="8080"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="http" product="Apache Tomcat/Coyote JSP engine" version="1.1" method="probed" conf="10"><cpe>cpe:/a:apache:coyote_http_connector:1.1</cpe></service><script id="http-title" output="Site doesn&apos;t have a title."></script></port>
 <port protocol="tcp" portid="8081"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="http" product="Jetty" version="6.1.25" method="probed" conf="10"><cpe>cpe:/a:mortbay:jetty:6.1.25</cpe></service><script id="http-title" output="Choose Your Path"><elem key="title">Choose Your Path</elem>
 </script><script id="http-server-header" output="Jetty(6.1.25)"><elem>Jetty(6.1.25)</elem>
@@ -303,17 +311,17 @@
 </table>
 </script></port>
 </ports>
-<hostscript><script id="smb-security-mode" output="&#xa;  account_used: guest&#xa;  authentication_level: user&#xa;  challenge_response: supported&#xa;  message_signing: disabled (dangerous, but default)"><elem key="account_used">guest</elem>
+<hostscript><script id="clock-skew" output="mean: -2h59m59s, deviation: 0s, median: -3h00m00s"><elem key="stddev">0</elem>
+<elem key="count">2</elem>
+<elem key="median">-10800</elem>
+<elem key="mean">-10799</elem>
+</script><script id="smb2-time" output="Protocol negotiation failed (SMB2)"/><script id="nbstat" output="NetBIOS name: OWASPBWA, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: &lt;unknown&gt; (unknown)"/><script id="smb-security-mode" output="&#xa;  account_used: guest&#xa;  authentication_level: user&#xa;  challenge_response: supported&#xa;  message_signing: disabled (dangerous, but default)"><elem key="account_used">guest</elem>
 <elem key="authentication_level">user</elem>
 <elem key="challenge_response">supported</elem>
 <elem key="message_signing">disabled</elem>
-</script><script id="clock-skew" output="mean: -2h59m57s, deviation: 0s, median: -2h59m58s"><elem key="mean">-10797</elem>
-<elem key="stddev">0</elem>
-<elem key="count">2</elem>
-<elem key="median">-10798</elem>
-</script><script id="smb2-time" output="Protocol negotiation failed (SMB2)"/><script id="nbstat" output="NetBIOS name: OWASPBWA, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: &lt;unknown&gt; (unknown)"/></hostscript><times srtt="487" rttvar="166" to="100000"/>
+</script></hostscript><times srtt="540" rttvar="132" to="100000"/>
 </host>
-<host starttime="1778553365" endtime="1778553661"><status state="up" reason="arp-response" reason_ttl="0"/>
+<host starttime="1778556767" endtime="1778557083"><status state="up" reason="arp-response" reason_ttl="0"/>
 <address addr="192.168.56.103" addrtype="ipv4"/>
 <address addr="08:00:27:C5:07:A0" addrtype="mac" vendor="Oracle VirtualBox virtual NIC"/>
 <hostnames>
@@ -341,11 +349,52 @@
 <elem key="bits">256</elem>
 </table>
 </script></port>
-<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="http" product="Apache httpd" version="2.4.18" extrainfo="(Ubuntu)" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2.4.18</cpe></service><script id="http-server-header" output="Apache/2.4.18 (Ubuntu)"><elem>Apache/2.4.18 (Ubuntu)</elem>
-</script><script id="http-title" output="Site doesn&apos;t have a title (text/html)."></script></port>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="http" product="Apache httpd" version="2.4.18" extrainfo="(Ubuntu)" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2.4.18</cpe></service><script id="http-title" output="Site doesn&apos;t have a title (text/html)."></script><script id="http-server-header" output="Apache/2.4.18 (Ubuntu)"><elem>Apache/2.4.18 (Ubuntu)</elem>
+</script></port>
 </ports>
-<times srtt="369" rttvar="158" to="100000"/>
+<times srtt="370" rttvar="95" to="100000"/>
 </host>
-<runstats><finished time="1778553661" timestr="Mon May 11 22:41:01 2026" summary="Nmap done at Mon May 11 22:41:01 2026; 3 IP addresses (3 hosts up) scanned in 298.07 seconds" elapsed="298.07" exit="success"/><hosts up="3" down="0" total="3"/>
+<host starttime="1778556767" endtime="1778557083"><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.56.104" addrtype="ipv4"/>
+<address addr="08:00:27:E3:25:FA" addrtype="mac" vendor="Oracle VirtualBox virtual NIC"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="closed" count="65526">
+<extrareasons reason="reset" count="65526" proto="tcp" ports="1-134,136-138,140-444,446-49151,49158-65535"/>
+</extraports>
+<port protocol="tcp" portid="135"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="139"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="netbios-ssn" product="Microsoft Windows netbios-ssn" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="microsoft-ds" product="Windows 7 Starter 7601 Service Pack 1 microsoft-ds" extrainfo="workgroup: WORKGROUP" hostname="WINDOWS7ULTIMAT" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49152"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49153"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49154"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49155"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49156"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49157"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+</ports>
+<hostscript><script id="smb2-time" output="&#xa;  date: 2026-05-12T03:35:00&#xa;  start_date: 2026-05-12T03:18:20"><elem key="date">2026-05-12T03:35:00</elem>
+<elem key="start_date">2026-05-12T03:18:20</elem>
+</script><script id="clock-skew" output="mean: 58m53s, deviation: 1h43m57s, median: -1m07s"><elem key="stddev">6237</elem>
+<elem key="count">3</elem>
+<elem key="median">-67</elem>
+<elem key="mean">3533</elem>
+</script><script id="smb-os-discovery" output="&#xa;  OS: Windows 7 Starter 7601 Service Pack 1 (Windows 7 Starter 6.1)&#xa;  OS CPE: cpe:/o:microsoft:windows_7::sp1&#xa;  Computer name: Windows7Ultimat&#xa;  NetBIOS computer name: WINDOWS7ULTIMAT\x00&#xa;  Workgroup: WORKGROUP\x00&#xa;  System time: 2026-05-12T00:35:02-03:00&#xa;"><elem key="os">Windows 7 Starter 7601 Service Pack 1</elem>
+<elem key="lanmanager">Windows 7 Starter 6.1</elem>
+<elem key="server">WINDOWS7ULTIMAT\x00</elem>
+<elem key="date">2026-05-12T00:35:02-03:00</elem>
+<elem key="fqdn">Windows7Ultimat</elem>
+<elem key="domain_dns">Windows7Ultimat</elem>
+<elem key="workgroup">WORKGROUP\x00</elem>
+<elem key="cpe">cpe:/o:microsoft:windows_7::sp1</elem>
+</script><script id="smb2-security-mode" output="&#xa;  2.1: &#xa;    Message signing enabled but not required"><table key="2.1">
+<elem>Message signing enabled but not required</elem>
+</table>
+</script><script id="smb-security-mode" output="&#xa;  account_used: guest&#xa;  authentication_level: user&#xa;  challenge_response: supported&#xa;  message_signing: disabled (dangerous, but default)"><elem key="account_used">guest</elem>
+<elem key="authentication_level">user</elem>
+<elem key="challenge_response">supported</elem>
+<elem key="message_signing">disabled</elem>
+</script><script id="nbstat" output="NetBIOS name: WINDOWS7ULTIMAT, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: 08:00:27:e3:25:fa (Oracle VirtualBox virtual NIC)"/></hostscript><times srtt="833" rttvar="238" to="100000"/>
+</host>
+<runstats><finished time="1778557083" timestr="Mon May 11 23:38:03 2026" summary="Nmap done at Mon May 11 23:38:03 2026; 4 IP addresses (4 hosts up) scanned in 318.37 seconds" elapsed="318.37" exit="success"/><hosts up="4" down="0" total="4"/>
 </runstats>
 </nmaprun>
