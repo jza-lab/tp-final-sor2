@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.98 scan initiated Tue May 12 00:42:44 2026 as: /usr/lib/nmap/nmap -p- -sV -sC -oX dataset_windows8.xml 192.168.56.106 -->
+<nmaprun scanner="nmap" args="/usr/lib/nmap/nmap -p- -sV -sC -oX dataset_windows8.xml 192.168.56.106" start="1778560964" startstr="Tue May 12 00:42:44 2026" version="7.98" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.56.106" addrtype="ipv4"/>
+<address addr="08:00:27:F4:49:D8" addrtype="mac" vendor="Oracle VirtualBox virtual NIC"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1778560968" endtime="1778561058"><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.56.106" addrtype="ipv4"/>
+<address addr="08:00:27:F4:49:D8" addrtype="mac" vendor="Oracle VirtualBox virtual NIC"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="closed" count="65526">
+<extrareasons reason="reset" count="65526" proto="tcp" ports="1-134,136-138,140-444,446-49151,49158-65535"/>
+</extraports>
+<port protocol="tcp" portid="135"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="139"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="netbios-ssn" product="Microsoft Windows netbios-ssn" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="microsoft-ds" product="Windows 8 Pro 9200 microsoft-ds" extrainfo="workgroup: WORKGROUP" hostname="LABOTPFINALSOR2" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49152"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49153"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49154"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49155"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49156"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="49157"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+</ports>
+<hostscript><script id="clock-skew" output="mean: 6h19m58s, deviation: 4h02m29s, median: 3h59m58s"><elem key="stddev">14549</elem>
+<elem key="median">14398</elem>
+<elem key="count">3</elem>
+<elem key="mean">22798</elem>
+</script><script id="smb-security-mode" output="&#xa;  account_used: guest&#xa;  authentication_level: user&#xa;  challenge_response: supported&#xa;  message_signing: disabled (dangerous, but default)"><elem key="account_used">guest</elem>
+<elem key="authentication_level">user</elem>
+<elem key="challenge_response">supported</elem>
+<elem key="message_signing">disabled</elem>
+</script><script id="smb2-security-mode" output="&#xa;  3.0: &#xa;    Message signing enabled but not required"><table key="3.0">
+<elem>Message signing enabled but not required</elem>
+</table>
+</script><script id="smb2-time" output="&#xa;  date: 2026-05-12T08:44:12&#xa;  start_date: 2026-05-12T08:36:07"><elem key="date">2026-05-12T08:44:12</elem>
+<elem key="start_date">2026-05-12T08:36:07</elem>
+</script><script id="smb-os-discovery" output="&#xa;  OS: Windows 8 Pro 9200 (Windows 8 Pro 6.2)&#xa;  OS CPE: cpe:/o:microsoft:windows_8::-&#xa;  Computer name: labotpfinalsor2&#xa;  NetBIOS computer name: LABOTPFINALSOR2\x00&#xa;  Workgroup: WORKGROUP\x00&#xa;  System time: 2026-05-12T01:44:12-07:00&#xa;"><elem key="os">Windows 8 Pro 9200</elem>
+<elem key="lanmanager">Windows 8 Pro 6.2</elem>
+<elem key="server">LABOTPFINALSOR2\x00</elem>
+<elem key="date">2026-05-12T01:44:12-07:00</elem>
+<elem key="fqdn">labotpfinalsor2</elem>
+<elem key="domain_dns">labotpfinalsor2</elem>
+<elem key="workgroup">WORKGROUP\x00</elem>
+<elem key="cpe">cpe:/o:microsoft:windows_8::-</elem>
+</script><script id="nbstat" output="NetBIOS name: LABOTPFINALSOR2, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: 08:00:27:f4:49:d8 (Oracle VirtualBox virtual NIC)"/></hostscript><times srtt="2065" rttvar="816" to="100000"/>
+</host>
+<runstats><finished time="1778561058" timestr="Tue May 12 00:44:18 2026" summary="Nmap done at Tue May 12 00:44:18 2026; 1 IP address (1 host up) scanned in 94.75 seconds" elapsed="94.75" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>
