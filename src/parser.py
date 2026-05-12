@@ -52,7 +52,7 @@ def parse_nmap_xml(xml_file, output_csv):
 							extrainfo = service.get('extrainfo', '')
 
 							# Concatenamos producto, version e info extra para tener el feature completo
-							version_full = f"{product} {version} {extrainfo}".strip()
+							version_full = f"{product} {version}".strip()
 
 							if version_full:
 								service_version = version_full
