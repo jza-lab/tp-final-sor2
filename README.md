@@ -1,118 +1,267 @@
-# Proyecto Final SOR2 - Análisis de Vulnerabilidades y Machine Learning
+# 🔍 Pipeline VulnLabel — Clasificación automática de vulnerabilidades con ML
 
-Este proyecto implementa un pipeline automatizado para el procesamiento de escaneos de seguridad de red (Nmap), el etiquetado de vulnerabilidades mediante la consulta a la base de datos de la NVD (National Vulnerability Database) y la clasificación de criticidad utilizando un modelo de Machine Learning (Random Forest).
-
----
-
-## 🛠️ Requisitos Previos y Configuración
-
-Antes de ejecutar los scripts, asegúrese de contar con las librerías necesarias instaladas en su entorno de Python:
-
-```bash
-pip install pandas scikit-learn requests
-```
-
-### Configuración de la API Key de la NVD
-La API de la NVD restringe severamente las consultas sin credenciales. Se recomienda obtener una API Key gratuita y exportarla temporalmente como variable de entorno en su terminal antes de correr el etiquetador:
-
-```bash
-export NVD_KEY=<TU_API_KEY_AQUI>
-```
+> Pipeline de Machine Learning para clasificar y priorizar automáticamente la criticidad de vulnerabilidades detectadas en escaneos de red con Nmap.
 
 ---
 
-## 🚀 Guía de Uso y Detalle de los Programas
+## 📋 Descripción
 
-El código está estructurado de forma modular dentro del directorio `src/`. A continuación, se detalla el funcionamiento, parámetros y ejemplos exactos de ejecución para cada script.
+Este proyecto automatiza la clasificación de riesgos en auditorías de seguridad informática utilizando Machine Learning. Dado el output crudo de Nmap (XML), el sistema predice automáticamente la criticidad de cada hallazgo en categorías estándar de la industria (`CRÍTICO / ALTO / MEDIO / BAJO / INFO`) sin intervención manual.
 
-### 1. Parseo de Escaneos (`src/parser.py`)
-Este script lee un archivo de reporte en formato XML generado por Nmap, filtra únicamente los puertos que se encuentran abiertos (`open`) y extrae características clave (IP, Puerto, Protocolo, Servicio y Versión Completa) para consolidarlas en un archivo estructurado CSV.
+**Problema que resuelve:** la priorización manual de vulnerabilidades es lenta y subjetiva. En 2025 se publicaron más de 42.000 nuevas vulnerabilidades (CVEs), lo que equivale a más de 115 por día. Con este volumen, resulta inviable que un analista clasifique manualmente cada hallazgo de un escaneo de red.
 
-**Sintaxis de ejecución:**
-```bash
-python src/parser.py -i <RUTA_XML_ENTRADA> [-o <RUTA_CSV_SALIDA>]
+---
+
+## 🏗️ Arquitectura del Pipeline
+
+```
+Escaneo Nmap (XML)
+        │
+        ▼
+  [parser.py]              → Extrae features: puerto, protocolo, servicio, versión
+        │
+        ▼
+[etiquetador_nvd.py]       → Consulta NVD API → obtiene CVSS score → asigna etiqueta
+        │
+        ▼
+   [modelo.py]             → Entrena Random Forest → predice criticidad
+        │
+        ▼
+  [comparador.py]          → Evalúa modelo vs clasificación manual del analista
+        │
+        ▼
+ Reporte priorizado por criticidad
 ```
 
-**Parámetros:**
-*   `-i`, `--input` (**Obligatorio**): Ruta del archivo XML de Nmap (ej. `../data/dataset.xml`).
-*   `-o`, `--output` (Opcional): Ruta del archivo CSV de salida. Por defecto genera `hallazgos_nmap.csv`.
-*   `-h`, `--help`: Muestra la descripción detallada de cada parámetro por terminal.
+---
 
-**Ejemplo Práctico:**
-```bash
-python src/parser.py -i ../data/dataset.xml
+## 📦 Contribuciones originales
+
+### 1. Pipeline VulnLabel
+Sistema automático y reproducible compuesto por cuatro módulos:
+
+| Módulo | Función |
+|--------|---------|
+| `parser.py` | Parsea XML de Nmap y extrae features por puerto abierto |
+| `etiquetador_nvd.py` | Consulta la NVD API para obtener puntajes CVSS y construir el ground truth |
+| `modelo.py` | Entrena, valida y evalúa el clasificador Random Forest |
+| `comparador.py` | Compara el rendimiento del modelo vs la clasificación manual del analista |
+
+### 2. Dataset NmapVuln-622
+Dataset original de **622 hallazgos de seguridad** etiquetados por criticidad CVSS, generado sobre 5 targets heterogéneos (Linux y Windows):
+
+| Target | Archivo |
+|--------|---------|
+| Metasploitable 2 | `data/Metasploitable2/dataset_Metasploitable2.xml` |
+| OWASP BWA | `data/OWASPBWA/dataset_owaspbwa.xml` |
+| BasicPentesting1 | `data/BasicPentesting1/dataset_basicpentesting1.xml` |
+| Windows 7 | `data/Windows7/dataset_windows7.xml` |
+| Windows 8 | `data/Windows8/dataset_windows8.xml` |
+
+---
+
+## 🗂️ Estructura del repositorio
+
+```
+tp-final-sor2/
+├── README.md
+├── requirements.txt
+├── data/
+│   ├── BasicPentesting1/
+│   │   └── dataset_basicpentesting1.xml
+│   ├── Metasploitable2/
+│   │   └── dataset_Metasploitable2.xml
+│   ├── OWASPBWA/
+│   │   └── dataset_owaspbwa.xml
+│   ├── Windows7/
+│   │   └── dataset_windows7.xml
+│   ├── Windows8/
+│   │   └── dataset_windows8.xml
+│   ├── dataset.xml                  # XML combinado de todos los targets
+│   ├── dataset_entrenamiento.csv    # Subset usado para entrenar el modelo
+│   ├── dataset_final.csv            # Dataset completo etiquetado (NmapVuln-622)
+│   └── baseline_manual.csv          # Clasificación manual del analista (50 hallazgos)
+├── results/
+│   ├── ejecucion_parser.png
+│   ├── ejecucion_etiquetador.png
+│   ├── resultado_etiquetador.png
+│   ├── ejecucion_modelo.png
+│   ├── ejecucion_comparadorP1.png
+│   └── ejecucion_comparadorP2png
+└── src/
+    ├── parser.py
+    ├── etiquetador_nvd.py
+    ├── modelo.py
+    ├── comparador.py
+    └── hallazgos_nmap.csv           # Output intermedio generado por parser.py
 ```
 
-### 2. Etiquetado Automático con NVD (`src/etiquetador_nvd.py`)
-Toma el CSV con los hallazgos de Nmap y consulta de forma automatizada la API REST 2.0 de la NVD utilizando la cadena de búsqueda de cada servicio y versión detectados. 
+---
 
-El script extrae el identificador del CVE, el puntaje CVSS (priorizando la métrica v3.1, luego v3.0 y finalmente v2) y asigna una etiqueta de criticidad (INFO, BAJO, MEDIO, ALTO o CRÍTICO) basada en dicho puntaje. Si una versión tiene múltiples vulnerabilidades asociadas, el script desdobla la información generando una fila por cada CVE en el dataset resultante. Incorpora un delay de 0.6 segundos por petición para respetar la cuota del Rate Limit de la API.
+## 🛠️ Instalación
 
-**Sintaxis de ejecución:**
+### Requisitos previos
+- Python 3.8+
+- Nmap instalado (`sudo apt install nmap`)
+- API Key de la NVD ([registrarse aquí](https://nvd.nist.gov/developers/request-an-api-key))
+
+### Instalación de dependencias
+
 ```bash
-python src/etiquetador_nvd.py -i <CSV_ENTRADA> -k <API_KEY> [-o <CSV_SALIDA>]
+git clone https://github.com/jza-lab/tp-final-sor2
+cd tp-final-sor2
 ```
 
-**Parámetros:**
-*   `-i`, `--input` (**Obligatorio**): Archivo CSV de entrada generado previamente por el parser (ej. `hallazgos_nmap.csv`).
-*   `-k`, `--key` (**Obligatorio**): API Key válida de la NVD para autorizar las consultas.
-*   `-o`, `--output` (Opcional): Ruta del archivo CSV de salida enriquecido. Por defecto genera `dataset_final.csv`.
+---
 
-**Ejemplo Práctico:**
+## 🚀 Uso
+
+### Paso 1 — Escanear los targets con Nmap
+
 ```bash
-python src/etiquetador_nvd.py -i hallazgos_nmap.csv -o dataset_final.csv -k $NVD_KEY
+sudo nmap -p- -sV -sC -oX data/dataset.xml <IP_TARGET>
 ```
 
-### 3. Pipeline de Machine Learning (`src/modelo.py`)
-Este programa ejecuta el ciclo completo de entrenamiento, evaluación interna y pruebas comparativas de un clasificador basado en el algoritmo Random Forest. No requiere parámetros por consola ya que lee las rutas estáticas predefinidas en el directorio `data/`.
+**Flags utilizados:**
+- `-p-` → escanea los 65.535 puertos TCP (evita sesgo de los top 1000)
+- `-sV` → detección de versiones mediante banner grabbing
+- `-sC` → scripts NSE por defecto para metadatos adicionales
+- `-oX` → exporta en XML para ingesta automatizada
 
-**Sintaxis de ejecución:**
+### Paso 2 — Parsear el XML y extraer features
+
+```bash
+python src/parser.py -i data/dataset.xml
+```
+
+Genera `src/hallazgos_nmap.csv` con columnas: `IP, Puerto, Protocolo, Servicio, Version_Completa`
+
+### Paso 3 — Etiquetar con la NVD API
+
+```bash
+python src/etiquetador_nvd.py -i src/hallazgos_nmap.csv -k $NVD_KEY
+```
+
+Genera `data/dataset_final.csv` con columnas adicionales: `CVE, CVSS_Score, Criticidad`
+
+**Lógica de etiquetado:**
+
+| CVSS Score | Criticidad |
+|------------|------------|
+| Sin CVE | INFO |
+| < 4.0 | BAJO |
+| 4.0 – 6.9 | MEDIO |
+| 7.0 – 8.9 | ALTO |
+| ≥ 9.0 | CRÍTICO |
+
+### Paso 4 — Entrenar y evaluar el modelo
+
 ```bash
 python src/modelo.py
 ```
 
-**Etapas del Proceso Interno:**
-*   **Codificación de Vocabulario:** Utiliza `LabelEncoder` entrenado con el dataset completo (`dataset_final.csv`) para prevenir errores de etiquetas no vistas (*unseen labels*) al procesar servicios poco frecuentes.
-*   **Evaluación Cruzada (Stratified K-Fold):** Aplica una división de 5 splits sobre el archivo `dataset_entrenamiento.csv` para obtener un F1-Score macro promedio y un reporte de clasificación realista y libre de sobreajuste (*data leakage*).
-*   **Entrenamiento Final:** Ajusta el modelo definitivo utilizando hiperparámetros balanceados (`class_weight='balanced'`) para mitigar el desbalance de clases.
-*   **Comparativa contra Baseline:** Evalúa el modelo entrenado sobre las 50 filas del archivo `baseline_manual.csv` y calcula los porcentajes de precisión del modelo y del criterio manual (Joaquín) tomando como árbitro la criticidad oficial de la NVD.
-*   **Casos de Estudio:** Imprime de manera automatizada las discrepancias encontradas en servicios específicos como `bindshell`, `exec` y `ajp13`.
+### Paso 5 — Comparar modelo vs analista humano
 
-### 4. Entorno de Comparación Manual (`src/comparador.py`)
-Es una versión simplificada del pipeline enfocada exclusivamente en analizar y mostrar en formato tabular los resultados detallados del baseline manual frente al modelo predictivo. Tampoco requiere argumentos por consola.
-
-**Sintaxis de ejecución:**
 ```bash
 python src/comparador.py
 ```
 
-**Salida en Consola:**
-*   Imprime una tabla completa que alinea puerto, servicio, versión y las tres clasificaciones en paralelo: `Criticidad_NVD`, `Criticidad_Joaquin` y `Criticidad_Modelo`.
-*   Calcula y muestra el total de aciertos absolutos (sobre 50) y el porcentaje de eficacia tanto del analista humano como del modelo de Machine Learning.
+---
+
+## 🤖 Decisiones técnicas
+
+### Modelo: Random Forest (Balanced)
+Se eligió Random Forest frente a Gradient Boosting y SVM por:
+- **Robustez** ante variables heterogéneas (numéricas y categóricas)
+- **Interpretabilidad** de los resultados
+- **Mitigación de desbalance** vía `class_weight='balanced'` de forma nativa
+
+### Ground Truth: NVD API
+Se usa el puntaje CVSS oficial de la National Vulnerability Database como etiqueta de verdad absoluta por ser el estándar universal de la industria.
+
+**Limitación identificada:** la NVD clasifica según CVEs documentados e ignora la peligrosidad contextual. Servicios extremadamente peligrosos sin CVE registrado (como una shell de root expuesta en el puerto 1524) son catalogados como `INFO`.
+
+### Validación: Stratified K-Fold (k=5)
+Se utiliza validación cruzada estratificada para mitigar el sobreajuste dado el tamaño reducido del dataset, preservando la proporción de clases en cada pliegue.
 
 ---
 
-## 🔄 Flujo de Trabajo Recomendado
+## 📊 Resultados
 
-Para reproducir el experimento completo desde cero, siga el orden secuencial de los comandos:
+### Validación cruzada (K-Fold, k=5)
 
-1. **Parsear el XML original:**
-   ```bash
-   python src/parser.py -i ../data/dataset.xml -o hallazgos_nmap.csv
-   ```
+| Métrica | Valor |
+|---------|-------|
+| F1-score macro promedio | **0.978** |
+| Desviación estándar | ± 0.023 |
 
-2. **Etiquetar con la API:**
-   ```bash
-   python src/etiquetador_nvd.py -i hallazgos_nmap.csv -o dataset_final.csv -k $NVD_KEY
-   ```
+**Reporte por clase:**
 
-3. **Ejecutar el pipeline de Machine Learning y ver métricas:**
-   ```bash
-   python src/modelo.py
-   ```
+| Clase | Precision | Recall | F1-score | Support |
+|-------|-----------|--------|----------|---------|
+| ALTO | 0.99 | 1.00 | 0.99 | 142 |
+| BAJO | 1.00 | 0.96 | 0.98 | 24 |
+| CRÍTICO | 1.00 | 0.94 | 0.97 | 52 |
+| INFO | 0.86 | 1.00 | 0.92 | 12 |
+| MEDIO | 1.00 | 1.00 | 1.00 | 287 |
 
-4. **Inspeccionar la tabla comparativa de aciertos:**
-   ```bash
-   python src/comparador.py
-   ```
-````</CSV_SALIDA></API_KEY></CSV_ENTRADA></RUTA_CSV_SALIDA></RUTA_XML_ENTRADA>
+### Comparativa vs baseline manual
+
+| Clasificador | Aciertos vs NVD |
+|---|---|
+| Analista humano (con contexto) | 3/50 (6%) |
+| **Modelo de ML** | **48/50 (96%)** |
+
+**Hallazgo clave:** la brecha no indica falla del analista, sino una limitación estructural de la NVD. El analista clasificó correctamente como `CRÍTICO` servicios como `bindshell` (puerto 1524), `exec` (puerto 512) y `ajp13` (puerto 8009), que la NVD etiqueta como `INFO` por carecer de CVE registrado.
+
+### Casos de estudio — Discrepancia de criterios
+
+| Puerto | Servicio | Criticidad NVD | Criticidad Analista | Criticidad Modelo |
+|--------|----------|----------------|---------------------|-------------------|
+| 1524 | bindshell | INFO | CRÍTICO | INFO |
+| 512 | exec | INFO | CRÍTICO | INFO |
+| 8009 | ajp13 | INFO | CRÍTICO | INFO |
+
+---
+
+## 🔬 Capas OSI involucradas
+
+| Capa | Función | Amenaza | Mitigación |
+|------|---------|---------|------------|
+| **Capa 3 (Red)** | Descubrimiento de hosts | Filtrado de ICMP por firewall | Uso de `-Pn` para forzar resolución |
+| **Capa 4 (Transporte)** | Estado de los 65.535 puertos TCP/UDP | Rate-limiting del host | Parámetro `-T4` para balance velocidad/fidelidad |
+| **Capa 7 (Aplicación)** | Extracción de banners y versiones | Banner grabbing alterado (ofuscación) | Scripts heurísticos NSE para verificar identidad real |
+
+---
+
+## ⚠️ Limitaciones conocidas
+
+1. **Sesgo del ground truth (NVD):** el modelo hereda las limitaciones de la NVD al no reconocer servicios peligrosos sin CVE documentado.
+2. **Desbalance de clases:** el entorno experimental concentra hallazgos en `INFO` y `MEDIO`, lo que limita la representatividad de clases como `CRÍTICO` o `BAJO`.
+
+---
+
+## 🔮 Trabajo a futuro
+
+1. **Corrección heurística del ground truth:** módulo de post-procesamiento que aplique reglas expertas para reclasificar servicios peligrosos catalogados como `INFO` (backdoors, shells expuestas, puertos críticos sin CVE).
+2. **Ingesta multifuente:** incorporar reportes de Nikto (Capa 7) y OpenVAS para enriquecer el vector de características.
+3. **Validación en infraestructura real:** despliegue pasivo en redes de producción para evaluar rendimiento ante ruido de red, firewalls e IDS/IPS.
+
+---
+
+## 📚 Referencias
+
+- Tiwari, H. (2025). *Advancing Vulnerability Classification with BERT: A Multi-Objective Learning Model.* arXiv. https://arxiv.org/abs/2503.20831
+- Choi et al. (2025). *Vulnerability2VEC: A Graph-Embedding approach for enhancing vulnerability classification.* CMES, 144(3).
+- Roy, A. et al. (2026). *AI-Driven Supervised Classification Algorithm for website Vulnerability detection using MITRE NVD CVE scores.* Preprints.org.
+- Saklani, S. & Kalia, A. (2025). *Severity prediction of software vulnerabilities using CNNs.* Information and Computer Security, 33(4).
+- Nowak et al. (2023). *Support for the vulnerability management process using conversion CVSS base score 2.0 to 3.x.* Sensors, 23(4).
+- Greig, J. (2026). *NIST to limit work on CVE entries as submissions surge.* The Record.
+
+---
+
+## 🏫 Contexto académico
+
+Trabajo Final — Sistemas Operativos y Redes 2 (Primer Semestre 2026)  
+Universidad Nacional de General Sarmiento — Instituto de Industria  
+Licenciatura en Sistemas
